@@ -168,19 +168,50 @@ SGR/
 │   └── urls.py                  # URLs de caja
 │
 ├── templates/                   # Plantillas HTML
-│   ├── base.html                # Plantilla principal
+│   ├── base.html                # Plantilla principal con navegación Bootstrap
 │   ├── authentication/          # Templates de autenticación
+│   │   ├── home.html            # Página de inicio
+│   │   ├── dashboard.html       # Dashboard general
+│   │   ├── menu_dashboard.html  # Dashboard cliente
+│   │   ├── orders_dashboard.html # Dashboard mesero
+│   │   ├── admin_dashboard.html # Dashboard administrador
+│   │   ├── login.html           # Formulario de login
+│   │   └── register.html        # Formulario de registro
 │   ├── menu/                    # Templates de menú
+│   │   ├── menu_list.html       # Lista de categorías y platos
+│   │   ├── menu_detail.html     # Detalle de categoría
+│   │   ├── dish_list.html       # Lista de platos por categoría
+│   │   ├── dish_detail.html     # Detalle de plato
+│   │   ├── category_form.html   # Formulario de categoría
+│   │   └── dish_form.html       # Formulario de plato
 │   ├── orders/                  # Templates de pedidos
+│   │   ├── order_list.html      # Lista de todas las órdenes
+│   │   ├── order_detail.html    # Detalle de orden
+│   │   ├── order_create.html    # Formulario de crear orden
+│   │   ├── kitchen_orders.html  # Vista de cocina
+│   │   └── order_form.html      # Formulario de orden
 │   ├── reservations/            # Templates de reservas
+│   │   ├── reservation_list.html # Lista de reservas
+│   │   ├── reservation_detail.html # Detalle de reserva
+│   │   ├── reservation_create.html # Formulario de crear reserva
+│   │   └── reservation_form.html # Formulario de reserva
 │   └── cash_management/         # Templates de caja
+│       ├── dashboard.html       # Dashboard principal de caja
+│       ├── cash_register_list.html # Lista de registros de caja
+│       ├── cash_register_detail.html # Detalle de registro
+│       ├── sales_list.html      # Lista de ventas
+│       └── reports.html         # Reportes y estadísticas
 │
 └── static/                      # Archivos estáticos
     ├── css/
-    │   └── style.css            # Estilos personalizados
+    │   └── style.css            # Estilos personalizados Bootstrap
     ├── js/
     │   └── main.js              # JavaScript principal
     └── images/                  # Imágenes del proyecto
+        ├── logo/                 # Logotipos y branding
+        ├── dishes/              # Imágenes de platos
+        ├── categories/          # Imágenes de categorías
+        └── ui/                  # Iconos y elementos UI
 ```
 
 ## 🔧 Flujo de Trabajo por Rol
