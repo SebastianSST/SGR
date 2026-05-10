@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-your-secret-key-here-change-in-production'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'sgr-e98f0krlj-sebastianssts-projects.vercel.app']
 
 
 # Application definition
@@ -150,4 +150,4 @@ CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = False
 SESSION_COOKIE_HTTPONLY = False
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000', 'http://localhost:8000', 'http://127.0.0.1:57079', 'http://localhost:57079']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000', 'http://localhost:8000', 'http://127.0.0.1:57079', 'http://localhost:57079', 'https://sgr-e98f0krlj-sebastianssts-projects.vercel.app']
