@@ -20,89 +20,59 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'menu:menu_list' %}">
-                                <i class="fas fa-book-open"></i> Menú
-                            </a>
-                        </li>
-                        {% if user.is_authenticated and user.user_type == 'client' %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'orders:order_create' %}">
-                                    <i class="fas fa-shopping-cart"></i> Hacer Pedido
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'reservations:reservation_create' %}">
-                                    <i class="fas fa-calendar-alt"></i> Reservar
-                                </a>
-                            </li>
-                        {% endif %}
-                        {% if user.is_authenticated and user.user_type == 'waiter' or user.user_type == 'admin' %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'orders:order_list' %}">
-                                    <i class="fas fa-clipboard-list"></i> Órdenes
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'orders:kitchen_orders' %}">
-                                    <i class="fas fa-chef-hat"></i> Cocina
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'reservations:reservation_list' %}">
-                                    <i class="fas fa-calendar-check"></i> Reservas
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'cash:dashboard' %}">
-                                    <i class="fas fa-cash-register"></i> Caja
-                                </a>
-                            </li>
-                        {% endif %}
-                        {% if user.is_authenticated and user.user_type == 'admin' %}
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown">
-                                    <i class="fas fa-cog"></i> Administración
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{% url 'menu:category_list' %}">Categorías</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'menu:dish_list' %}">Platos</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'reservations:table_list' %}">Mesas</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="/admin/">Panel Admin</a></li>
-                                </ul>
-                            </li>
-                        {% endif %}
-                    {% endif %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'menu:menu_list' %}">
+            <i class="fas fa-book-open"></i> Menú
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'orders:order_create' %}">
+            <i class="fas fa-shopping-cart"></i> Hacer Pedido
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'reservations:reservation_create' %}">
+            <i class="fas fa-calendar-alt"></i> Reservar
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'orders:order_list' %}">
+            <i class="fas fa-clipboard-list"></i> Órdenes
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'orders:kitchen_orders' %}">
+            <i class="fas fa-chef-hat"></i> Cocina
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'reservations:reservation_list' %}">
+            <i class="fas fa-calendar-check"></i> Reservas
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'cash_management:cash_register_list' %}">
+            <i class="fas fa-cash-register"></i> Caja
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/">
+            <i class="fas fa-cog"></i> Admin
+        </a>
+    </li>
                 </ul>
                 <ul class="navbar-nav">
-                    {% if user.is_authenticated %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
-                                <i class="fas fa-user"></i> {{ user.username }}
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url 'authentication:dashboard' %}">Dashboard</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{% url 'authentication:logout' %}">
-                                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-                                </a></li>
-                            </ul>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'authentication:login' %}">
-                                <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'authentication:register' %}">
-                                <i class="fas fa-user-plus"></i> Registrarse
-                            </a>
-                        </li>
-                    {% endif %}
-                </ul>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+            <i class="fas fa-user"></i> Demo User
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'authentication:dashboard' %}">Dashboard</a></li>
+            <li><a class="dropdown-item" href="{% url 'authentication:menu_dashboard' %}">Menú Cliente</a></li>
+            <li><a class="dropdown-item" href="{% url 'authentication:orders_dashboard' %}">Pedidos Mesero</a></li>
+        </ul>
+    </li>
+</ul>
             </div>
         </div>
     </nav>

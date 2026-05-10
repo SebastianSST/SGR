@@ -12,22 +12,9 @@
         <p class="lead mb-4">
             La solución completa para gestionar tu restaurante: pedidos, reservas, menú digital y más.
         </p>
-        {% if not user.is_authenticated %}
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <a href="{% url 'authentication:login' %}" class="btn btn-light btn-lg me-2 mb-2">
-                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
-                    </a>
-                    <a href="{% url 'authentication:register' %}" class="btn btn-outline-light btn-lg mb-2">
-                        <i class="fas fa-user-plus"></i> Registrarse
-                    </a>
-                </div>
-            </div>
-        {% else %}
-            <a href="{% url 'authentication:dashboard' %}" class="btn btn-light btn-lg">
-                <i class="fas fa-tachometer-alt"></i> Ir al Dashboard
-            </a>
-        {% endif %}
+        <a href="{% url 'authentication:dashboard' %}" class="btn btn-light btn-lg">
+    <i class="fas fa-tachometer-alt"></i> Ir al Dashboard
+</a>
     </div>
 </div>
 

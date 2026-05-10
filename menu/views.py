@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from .models import Category, Dish
@@ -29,12 +28,10 @@ def menu_list(request):
     }
     return render(request, 'menu/menu_list.html', context)
 
-@login_required
 def category_list(request):
     categories = Category.objects.all()
     return render(request, 'menu/category_list.html', {'categories': categories})
 
-@login_required
 def category_create(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST, request.FILES)
@@ -46,7 +43,6 @@ def category_create(request):
         form = CategoryForm()
     return render(request, 'menu/category_form.html', {'form': form, 'title': 'Crear Categoría'})
 
-@login_required
 def category_edit(request, pk):
     category = get_object_or_404(Category, pk=pk)
     if request.method == 'POST':
@@ -59,7 +55,6 @@ def category_edit(request, pk):
         form = CategoryForm(instance=category)
     return render(request, 'menu/category_form.html', {'form': form, 'title': 'Editar Categoría'})
 
-@login_required
 def category_delete(request, pk):
     category = get_object_or_404(Category, pk=pk)
     if request.method == 'POST':
@@ -68,12 +63,10 @@ def category_delete(request, pk):
         return redirect('menu:category_list')
     return render(request, 'menu/category_confirm_delete.html', {'category': category})
 
-@login_required
 def dish_list(request):
     dishes = Dish.objects.all()
     return render(request, 'menu/dish_list.html', {'dishes': dishes})
 
-@login_required
 def dish_create(request):
     if request.method == 'POST':
         form = DishForm(request.POST, request.FILES)
@@ -85,7 +78,6 @@ def dish_create(request):
         form = DishForm()
     return render(request, 'menu/dish_form.html', {'form': form, 'title': 'Crear Plato'})
 
-@login_required
 def dish_edit(request, pk):
     dish = get_object_or_404(Dish, pk=pk)
     if request.method == 'POST':
@@ -98,7 +90,6 @@ def dish_edit(request, pk):
         form = DishForm(instance=dish)
     return render(request, 'menu/dish_form.html', {'form': form, 'title': 'Editar Plato'})
 
-@login_required
 def dish_delete(request, pk):
     dish = get_object_or_404(Dish, pk=pk)
     if request.method == 'POST':

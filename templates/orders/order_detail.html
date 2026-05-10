@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle de Orden - SIGR{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2>
+            <i class="fas fa-clipboard-list"></i> Detalle de Orden
+        </h2>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-12">
+        <a href="{% url 'orders:order_list' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Volver a Órdenes
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Información de la Orden</h5>
+                        <p><strong>Número:</strong> #{{ order.id }}</p>
+                        <p><strong>Estado:</strong> <span class="badge bg-primary">{{ order.get_status_display }}</span></p>
+                        <p><strong>Fecha:</strong> {{ order.created_at|date:"d/m/Y H:i" }}</p>
+                        <p><strong>Total:</strong> ${{ order.total_amount }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Acciones</h5>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown">
+                                <i class="fas fa-edit"></i> Cambiar Estado
+                            </button>
+                            <ul class="dropdown-menu">
+                                {% for status, label in order.STATUS_CHOICES %}
+                                <li><a class="dropdown-item" href="#">{{ label }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr>
+                
+                <h5>Items de la Orden</h5>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Plato</th>
+                                <th>Cantidad</th>
+                                <th>Precio Unitario</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="4" class="text-center text-muted">
+                                    No hay items en esta orden
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
