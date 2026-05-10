@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard Administrador - SIGR{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2>
+            <i class="fas fa-tachometer-alt"></i> Dashboard Administrador
+        </h2>
+        <p class="text-muted">Bienvenido, {{ user.first_name }} {{ user.last_name }}</p>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-users"></i> Usuarios
+                </h5>
+                <h2 class="display-4">0</h2>
+                <p class="card-text">Total de usuarios registrados</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-clipboard-list"></i> Órdenes Hoy
+                </h5>
+                <h2 class="display-4">0</h2>
+                <p class="card-text">Órdenes del día</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-white">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-calendar-check"></i> Reservas Hoy
+                </h5>
+                <h2 class="display-4">0</h2>
+                <p class="card-text">Reservas del día</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-dollar-sign"></i> Ventas Hoy
+                </h5>
+                <h2 class="display-4">$0</h2>
+                <p class="card-text">Total de ventas</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>
+                    <i class="fas fa-cog"></i> Acciones Rápidas
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-2">
+                        <a href="{% url 'menu:category_create' %}" class="btn btn-outline-primary btn-sm w-100">
+                            <i class="fas fa-plus"></i> Nueva Categoría
+                        </a>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <a href="{% url 'menu:dish_create' %}" class="btn btn-outline-success btn-sm w-100">
+                            <i class="fas fa-utensils"></i> Nuevo Plato
+                        </a>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <a href="{% url 'reservations:table_create' %}" class="btn btn-outline-warning btn-sm w-100">
+                            <i class="fas fa-chair"></i> Nueva Mesa
+                        </a>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <a href="{% url 'cash:open_register' %}" class="btn btn-outline-info btn-sm w-100">
+                            <i class="fas fa-cash-register"></i> Abrir Caja
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>
+                    <i class="fas fa-chart-line"></i> Sistema
+                </h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span><i class="fas fa-book-open"></i> Categorías</span>
+                        <span class="badge bg-primary rounded-pill">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span><i class="fas fa-utensils"></i> Platos</span>
+                        <span class="badge bg-success rounded-pill">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span><i class="fas fa-chair"></i> Mesas</span>
+                        <span class="badge bg-warning rounded-pill">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span><i class="fas fa-users"></i> Usuarios</span>
+                        <span class="badge bg-info rounded-pill">0</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

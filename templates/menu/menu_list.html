@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}Menú - SIGR{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2>
+            <i class="fas fa-book-open"></i> Menú Digital
+        </h2>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <form method="get" class="d-flex">
+            <input type="text" name="search" class="form-control me-2" placeholder="Buscar platos..." value="{{ search_query }}">
+            <button type="submit" class="btn btn-outline-primary">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <select name="category" class="form-select" onchange="this.form.submit()">
+            <option value="">Todas las categorías</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}" {% if selected_category == category.id|stringformat:"s" %}selected{% endif %}>
+                    {{ category.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+<div class="row">
+    {% for dish in dishes %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                {% if dish.image %}
+                    <img src="{{ dish.image.url }}" class="card-img-top" alt="{{ dish.name }}" style="height: 200px; object-fit: cover;">
+                {% else %}
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-utensils fa-3x text-muted"></i>
+                    </div>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ dish.name }}</h5>
+                    <p class="card-text">{{ dish.description|truncatewords:20 }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="h5 text-primary">${{ dish.price }}</span>
+                        <small class="text-muted">
+                            <i class="fas fa-clock"></i> {{ dish.preparation_time }} min
+                        </small>
+                    </div>
+                    {% if dish.is_available %}
+                        <span class="badge bg-success">Disponible</span>
+                    {% else %}
+                        <span class="badge bg-danger">No disponible</span>
+                    {% endif %}
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">
+                        <i class="fas fa-tag"></i> {{ dish.category.name }}
+                    </small>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> No se encontraron platos.
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% if user.is_authenticated and user.user_type == 'client' %}
+    <div class="fixed-bottom p-3" style="background: rgba(255,255,255,0.9);">
+        <div class="container">
+            <a href="{% url 'orders:order_create' %}" class="btn btn-primary btn-lg w-100">
+                <i class="fas fa-shopping-cart"></i> Hacer Pedido
+            </a>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

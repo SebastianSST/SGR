@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio - SIGR{% endblock %}
+
+{% block content %}
+<div class="hero-section text-center py-5 bg-primary text-white rounded mb-4">
+    <div class="container">
+        <h1 class="display-4 mb-4">
+            <i class="fas fa-utensils"></i> SIGR
+        </h1>
+        <h2 class="mb-4">Sistema Integral de Gestión de Restaurante</h2>
+        <p class="lead mb-4">
+            La solución completa para gestionar tu restaurante: pedidos, reservas, menú digital y más.
+        </p>
+        {% if not user.is_authenticated %}
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <a href="{% url 'authentication:login' %}" class="btn btn-light btn-lg me-2 mb-2">
+                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                    </a>
+                    <a href="{% url 'authentication:register' %}" class="btn btn-outline-light btn-lg mb-2">
+                        <i class="fas fa-user-plus"></i> Registrarse
+                    </a>
+                </div>
+            </div>
+        {% else %}
+            <a href="{% url 'authentication:dashboard' %}" class="btn btn-light btn-lg">
+                <i class="fas fa-tachometer-alt"></i> Ir al Dashboard
+            </a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-shopping-cart fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Gestión de Pedidos</h5>
+                <p class="card-text">Sistema completo para tomar y gestionar pedidos en tiempo real.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-calendar-alt fa-3x text-success mb-3"></i>
+                <h5 class="card-title">Reservas</h5>
+                <p class="card-text">Gestiona reservas de manera eficiente con calendario integrado.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-book-open fa-3x text-warning mb-3"></i>
+                <h5 class="card-title">Menú Digital</h5>
+                <p class="card-text">Menú interactivo con gestión de categorías y platos.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-cash-register fa-3x text-info mb-3"></i>
+                <h5 class="card-title">Control de Caja</h5>
+                <p class="card-text">Gestión completa de caja con reportes diarios y cierre automático.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-chart-line fa-3x text-danger mb-3"></i>
+                <h5 class="card-title">Reportes</h5>
+                <p class="card-text">Análisis detallado de ventas y rendimiento del restaurante.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

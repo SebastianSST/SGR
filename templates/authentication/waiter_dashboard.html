@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard Mesero - SIGR{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2>
+            <i class="fas fa-tachometer-alt"></i> Dashboard Mesero
+        </h2>
+        <p class="text-muted">Bienvenido, {{ user.first_name }} {{ user.last_name }}</p>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-clipboard-list"></i> Mis Órdenes
+                </h5>
+                <h2 class="display-4">0</h2>
+                <p class="card-text">Órdenes asignadas</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-calendar-check"></i> Reservas Hoy
+                </h5>
+                <h2 class="display-4">0</h2>
+                <p class="card-text">Reservas del día</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-warning text-white">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-chair"></i> Mesas
+                </h5>
+                <h2 class="display-4">0</h2>
+                <p class="card-text">Total de mesas</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>
+                    <i class="fas fa-tasks"></i> Acciones Rápidas
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-2">
+                        <a href="{% url 'orders:order_create' %}" class="btn btn-primary btn-sm w-100">
+                            <i class="fas fa-plus"></i> Nueva Orden
+                        </a>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <a href="{% url 'reservations:reservation_create' %}" class="btn btn-success btn-sm w-100">
+                            <i class="fas fa-calendar-plus"></i> Nueva Reserva
+                        </a>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <a href="{% url 'orders:kitchen_orders' %}" class="btn btn-warning btn-sm w-100">
+                            <i class="fas fa-chef-hat"></i> Cocina
+                        </a>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <a href="{% url 'cash:dashboard' %}" class="btn btn-info btn-sm w-100">
+                            <i class="fas fa-cash-register"></i> Caja
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>
+                    <i class="fas fa-exclamation-triangle"></i> Órdenes Pendientes
+                </h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">No hay órdenes pendientes asignadas.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>
+                    <i class="fas fa-clock"></i> Actividad Reciente
+                </h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">No hay actividad reciente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
